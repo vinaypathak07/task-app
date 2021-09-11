@@ -70,13 +70,22 @@ export class TaskService {
         task = this.tasks.todo[id];
     } else if(newTaskStatus === 'inProgress') {
         this.addNewTask(newTask, newTaskStatus);
-        // Call Delete in todo
+        this.deleteTask(id);
     } else {
         this.addNewTask(newTask, newTaskStatus);
-        // Call Delete in todo
+        this.deleteTask(id);
     }  
     task.title = newTask.title;
     task.description = newTask.description;
+    this.taskAdded.next(this.tasks);
+  }
+
+  /**
+   * Deletes particular tasks from the tasks object
+   * @param id 
+   */
+  deleteTask(id : number) {
+    this.tasks.todo.splice(id, 1);
     this.taskAdded.next(this.tasks);
   }
 }
