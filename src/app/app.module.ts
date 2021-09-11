@@ -4,23 +4,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyTaskComponent } from './my-task/my-task.component';
+import { ConfirmDialogComponent, MyTaskComponent } from './my-task/my-task.component';
 import { TaskStatusComponent } from './my-task/task-status/task-status.component';
 import {MatRippleModule} from '@angular/material/core';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreateTaskDialogComponent } from './my-task/create-task-dialog/create-task-dialog.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyTaskComponent,
-    TaskStatusComponent
+    TaskStatusComponent,
+    CreateTaskDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatRippleModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

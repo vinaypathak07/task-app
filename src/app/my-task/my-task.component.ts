@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {MatDialog} from '@angular/material/dialog';
+import { CreateTaskDialogComponent } from './create-task-dialog/create-task-dialog.component';
 
 @Component({
   selector: 'app-my-task',
@@ -8,7 +10,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class MyTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -38,4 +40,29 @@ export class MyTaskComponent implements OnInit {
                         event.currentIndex);
     }
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateTaskDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
+
+@Component({
+  selector: 'confirm-dialog',
+  templateUrl: './confirm-dialog.component.html',
+})
+
+export class ConfirmDialogComponent {}
+
+
