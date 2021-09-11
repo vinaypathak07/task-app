@@ -16,6 +16,8 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatRadioModule} from '@angular/material/radio';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatRadioModule
+    MatRadioModule,
+    NotificationModule
     
   ],
   providers: [],
