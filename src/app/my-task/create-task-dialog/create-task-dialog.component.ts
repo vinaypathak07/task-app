@@ -10,23 +10,31 @@ import { TaskService } from 'src/app/shared/task.service';
 })
 export class CreateTaskDialogComponent implements OnInit {
 
-  createTaskForm : FormGroup;
-  id : number;
+  createTaskForm: FormGroup;
+  id: number;
   taskStatus = true;
-  constructor( public dialogRef: MatDialogRef<CreateTaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private taskService:TaskService) { 
-    
+  task: any;
+  taskTitle: string = '';
+  taskDescription: string = '';
+  taskEditMode = false;
+  constructor(public dialogRef: MatDialogRef<CreateTaskDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private taskService: TaskService) {
+
+    this.id = this.data.id;
+    if (this.id != -1) {
+      this.task = this.taskService.getToDoItemById(this.id);
+      this.taskTitle = this.task.title;
+      this.taskDescription = this.task.description;
+      this.taskEditMode = true;
+    }
     this.createTaskForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      status : new FormControl('todo')
+      title: new FormControl(this.taskTitle, Validators.required),
+      description: new FormControl(this.taskDescription, Validators.required),
+      status: new FormControl('todo')
     });
 
     console.log(this.data);
-    this.id = this.data.id;
-    if(this.id != -1) {
 
-    }
   }
 
   ngOnInit(): void {
@@ -39,10 +47,14 @@ export class CreateTaskDialogComponent implements OnInit {
     const newTaskStatus = this.createTaskForm.value.status;
     console.log(newTaskStatus);
     let newTask = {
-          title: title,
-          description: description,
-          timestamp : new Date()
+      title: title,
+      description: description,
+      timestamp: new Date()
     }
-    this.taskService.addNewTask(newTask,newTaskStatus);
+    if(this.taskEditMode) {
+      this.taskService.editTask(newTask, this.id, newTaskStatus);
+    } else {
+      this.taskService.addNewTask(newTask, newTaskStatus);
+    }
   }
 }
