@@ -23,14 +23,14 @@
         [cdkDropListData]="todo"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
-        [cdkDropListConnectedTo]="[doneList]"
+        [cdkDropListConnectedTo]="[inProgressList]"
       >
-        <mat-card class="example-box" *ngFor="let item of todo" cdkDrag>
+        <mat-card class="example-box" *ngFor="let item of todo; let id=index" cdkDrag>
           <mat-card-title>
             {{ item.title }}
           </mat-card-title>
           <mat-card-actions>
-            <button mat-icon-button (click)="openDialog(item.id)">
+            <button mat-icon-button (click)="openDialog(id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
@@ -71,14 +71,14 @@
     <div class="task-container">
       <div
         cdkDropList
-        #doneList="cdkDropList"
-        [cdkDropListData]="done"
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgress"
         class="example-list"
         (cdkDropListDropped)="drop($event)"
         [cdkDropListConnectedTo]="[todoList]"
         [cdkDropListConnectedTo]="[completedList]"
       >
-        <mat-card class="example-box" *ngFor="let item of done" cdkDrag>
+        <mat-card class="example-box" *ngFor="let item of inProgress; let id=index" cdkDrag>
             <mat-card-title>
                 {{ item.title }}
               </mat-card-title>
@@ -97,9 +97,9 @@
           [cdkDropListData]="completed"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
-          [cdkDropListConnectedTo]="[doneList]"
+          [cdkDropListConnectedTo]="[inProgressList]"
         >
-          <mat-card class="example-box" *ngFor="let item of completed" cdkDrag>
+          <mat-card class="example-box" *ngFor="let item of completed;let id=index" cdkDrag>
               <mat-card-title>
                   {{ item.title }}
                 </mat-card-title>

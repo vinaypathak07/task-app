@@ -4,7 +4,7 @@
     font-weight:bold;
 }
 
-h2 {
+h2 ,p{
     margin:0;
 }
 
@@ -22,7 +22,10 @@ mat-label {
 }
 
 .create-task {
-    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:100%;
 }
 
 .mat-radio-group {
@@ -31,8 +34,16 @@ mat-label {
     justify-content: space-between;
     
 }
-
+.mat-dialog-content {
+    height: 88%;
+    overflow: hidden;
+}
 .mat-radio-button {
     font-family: Inconsolata,monospace;
     font-weight: bold;
+}
+
+mat-dialog-actions.mat-dialog-actions {
+    margin:0;
+    padding:0;
 }

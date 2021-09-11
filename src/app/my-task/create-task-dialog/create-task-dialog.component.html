@@ -1,32 +1,51 @@
 <h2 mat-dialog-title>Create Task</h2>
-<hr>
+<hr />
 <mat-dialog-content class="mat-typography">
-  <form class="create-task" [formGroup]="createTaskForm" (ngSubmit)="createTask()">
+  <form
+    class="create-task"
+    [formGroup]="createTaskForm"
+    (ngSubmit)="createTask()"
+  >
     <p>
       <mat-label>Title</mat-label>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Simple placeholder" formControlName="title"/>
+        <input
+          matInput
+          placeholder="Enter Title"
+          formControlName="title"
+        />
       </mat-form-field>
     </p>
     <p>
-      <mat-label>Descrption</mat-label>
+      <mat-label>Description</mat-label>
       <mat-form-field appearance="outline">
-        <textarea matInput placeholder="Simple placeholder" formControlName="description">
+        <textarea
+          matInput
+          placeholder="Enter Description"
+          formControlName="description"
+        >
         </textarea>
       </mat-form-field>
     </p>
     <p>
-        <mat-label>Status</mat-label>
-        <br>
-        <mat-radio-group aria-label="Select an option">
-            <mat-radio-button style="color:#F7CD2E" value="1">To Do</mat-radio-button>
-            <mat-radio-button style="color:#12B0E8" value="2">In-Progress</mat-radio-button>
-            <mat-radio-button style="color:#22CB5C" value="3">Completed</mat-radio-button>
-        </mat-radio-group>
+      <mat-label>Status</mat-label>
+      <br />
+      <mat-radio-group formControlName="status">
+        <mat-radio-button style="color: #f7cd2e" value="todo"
+        [checked] = "taskStatus"
+        >To Do</mat-radio-button
+        >
+        <mat-radio-button style="color: #12b0e8" value="inProgress"
+          >In-Progress</mat-radio-button
+        >
+        <mat-radio-button style="color: #22cb5c" value="completed"
+          >Completed</mat-radio-button
+        >
+      </mat-radio-group>
     </p>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+    </mat-dialog-actions>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
-</mat-dialog-actions>

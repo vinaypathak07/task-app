@@ -12,20 +12,22 @@ import { TaskService } from '../shared/task.service';
 export class MyTaskComponent implements OnInit {
   tasks :any;
   todo:any[];
-  done:any[];
+  inProgress:any[];
   completed:any[];
 
   constructor(public dialog: MatDialog, private taskService : TaskService) {
     this.todo = [];
-    this.done = [];
+    this.inProgress = [];
     this.completed = [];
    }
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
-    this.todo = this.tasks['todo'];
-    this.done = this.tasks['done'];
-    this.completed = this.tasks['completed'];
+    this.taskService.taskAdded.subscribe((tasks:any) => {
+      console.log(tasks);
+      this.todo = tasks['todo'];
+      this.inProgress = tasks['inProgress'];
+      this.completed = tasks['completed']
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
