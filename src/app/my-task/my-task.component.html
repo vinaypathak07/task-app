@@ -2,7 +2,7 @@
   <div class="card to-do">
     <div class="card-title">
       <span>TO DO</span>
-      <button mat-button (click)="openDialog()">
+      <button mat-button (click)="openDialog(-1)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="36px"
@@ -27,10 +27,10 @@
       >
         <mat-card class="example-box" *ngFor="let item of todo" cdkDrag>
           <mat-card-title>
-            {{ item }}
+            {{ item.title }}
           </mat-card-title>
           <mat-card-actions>
-            <button mat-icon-button (click)="openDialog()">
+            <button mat-icon-button (click)="openDialog(item.id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
@@ -80,7 +80,7 @@
       >
         <mat-card class="example-box" *ngFor="let item of done" cdkDrag>
             <mat-card-title>
-                {{ item }}
+                {{ item.title }}
               </mat-card-title>
         </mat-card>
       </div>
@@ -101,7 +101,7 @@
         >
           <mat-card class="example-box" *ngFor="let item of completed" cdkDrag>
               <mat-card-title>
-                  {{ item }}
+                  {{ item.title }}
                 </mat-card-title>
           </mat-card>
         </div>
