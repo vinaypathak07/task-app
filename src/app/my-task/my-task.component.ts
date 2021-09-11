@@ -30,6 +30,11 @@ export class MyTaskComponent implements OnInit {
     'Walk dog'
   ];
 
+  completed = [
+    'Go home',
+    'Fall asleep'
+  ];
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -42,7 +47,10 @@ export class MyTaskComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CreateTaskDialogComponent);
+    const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
+      width:'600px',
+      height:'500px'
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

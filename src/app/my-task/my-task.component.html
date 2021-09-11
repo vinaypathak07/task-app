@@ -76,10 +76,13 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)"
         [cdkDropListConnectedTo]="[todoList]"
+        [cdkDropListConnectedTo]="[completedList]"
       >
-        <div class="example-box" *ngFor="let item of done" cdkDrag>
-          {{ item }}
-        </div>
+        <mat-card class="example-box" *ngFor="let item of done" cdkDrag>
+            <mat-card-title>
+                {{ item }}
+              </mat-card-title>
+        </mat-card>
       </div>
     </div>
   </div>
@@ -87,5 +90,21 @@
     <div class="card-title">
       <span>COMPLETED</span>
     </div>
+    <div class="task-container">
+        <div
+          cdkDropList
+          #completedList="cdkDropList"
+          [cdkDropListData]="completed"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListConnectedTo]="[doneList]"
+        >
+          <mat-card class="example-box" *ngFor="let item of completed" cdkDrag>
+              <mat-card-title>
+                  {{ item }}
+                </mat-card-title>
+          </mat-card>
+        </div>
+      </div>
   </div>
 </div>

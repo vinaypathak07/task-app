@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
+.mat-dialog-title {
+    font-family: Inconsolata, monospace;
+    font-weight:bold;
+}
+
+h2 {
+    margin:0;
+}
+
+textarea {
+    height:70px;
+}
+
+mat-label {
+    font-family: Inconsolata, monospace;
+    font-weight:bold;
+}
+
+.mat-form-field {
+    width:100%;
+}
+
+.create-task {
+    margin-top:20px;
+}
+
+.mat-radio-group {
+    display: flex;
+    margin-top:5px;
+    justify-content: space-between;
+    
+}
+
+.mat-radio-button {
+    font-family: Inconsolata,monospace;
+    font-weight: bold;
+}
