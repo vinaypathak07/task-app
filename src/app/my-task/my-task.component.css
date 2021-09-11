@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
+.card-container {
+    display:flex;
+    justify-content: space-evenly;
+    margin:10px;
+    height:70%;
+}
+
+span {
+   font-family: Inconsolata, monospace;
+   font-weight: bold;
+   font-size:24px;
+   color: black;
+}
+
+.card {
+    border: solid 1px lightgray;
+    border-radius: 7px;
+    width: 25%;
+    height: 95%;
+}
+.card-title {
+    height:35px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 1px lightgray;
+}
+.to-do .card-title {
+   background: #F7CD2E;
+}
+
+.progress .card-title {
+    background: #12B0E8
+}
+
+.completed .card-title {
+    background: #22CB5C;
+}
+.card-title {
+    padding:10px;   
+}
