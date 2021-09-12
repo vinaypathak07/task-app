@@ -23,13 +23,16 @@ export class MyTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.taskAdded.subscribe((tasks: any) => {
-      console.log(tasks);
+      // console.log(tasks);
       this.todo = tasks['todo'];
       this.inProgress = tasks['inProgress'];
       this.completed = tasks['completed']
     });
   }
-
+  
+  /**
+   * Drag and drop functionality
+   */
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

@@ -1,4 +1,4 @@
-<div class="to-do-task card-container">
+<div class="card-container">
   <div class="card to-do">
     <div class="card-title">
       <span>TO DO</span>
@@ -25,7 +25,11 @@
         (cdkDropListDropped)="drop($event)"
         [cdkDropListConnectedTo]="[inProgressList]"
       >
-        <mat-card class="example-box" *ngFor="let item of todo; let id=index" cdkDrag>
+        <mat-card
+          class="example-box"
+          *ngFor="let item of todo; let id = index"
+          cdkDrag
+        >
           <mat-card-title>
             {{ item.title }}
           </mat-card-title>
@@ -78,10 +82,14 @@
         [cdkDropListConnectedTo]="[todoList]"
         [cdkDropListConnectedTo]="[completedList]"
       >
-        <mat-card class="example-box" *ngFor="let item of inProgress; let id=index" cdkDrag>
-            <mat-card-title>
-                {{ item.title }}
-              </mat-card-title>
+        <mat-card
+          class="example-box"
+          *ngFor="let item of inProgress; let id = index"
+          cdkDrag
+        >
+          <mat-card-title>
+            {{ item.title }}
+          </mat-card-title>
         </mat-card>
       </div>
     </div>
@@ -91,20 +99,24 @@
       <span>COMPLETED</span>
     </div>
     <div class="task-container">
-        <div
-          cdkDropList
-          #completedList="cdkDropList"
-          [cdkDropListData]="completed"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-          [cdkDropListConnectedTo]="[inProgressList]"
+      <div
+        cdkDropList
+        #completedList="cdkDropList"
+        [cdkDropListData]="completed"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListConnectedTo]="[inProgressList]"
+      >
+        <mat-card
+          class="example-box"
+          *ngFor="let item of completed; let id = index"
+          cdkDrag
         >
-          <mat-card class="example-box" *ngFor="let item of completed;let id=index" cdkDrag>
-              <mat-card-title>
-                  {{ item.title }}
-                </mat-card-title>
-          </mat-card>
-        </div>
+          <mat-card-title>
+            {{ item.title }}
+          </mat-card-title>
+        </mat-card>
       </div>
+    </div>
   </div>
 </div>
